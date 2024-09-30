@@ -9,7 +9,7 @@ app.use("/", routes)
 app.get("/", (req, res) => {
   console.log("runnning");
   res.status(200).json({
-    message: "Welcome to the API",
+    message: "Welcome to the  Twiddle API",
     version: "1.0.0",
   });
 });
