@@ -13,7 +13,7 @@ const auth = new google.auth.GoogleAuth({
 });
 
 const sheets = google.sheets({ version: "v4", auth });
-const SPREADSHEET_ID = JSON.parse(process.env.spreadsheetId);
+const SPREADSHEET_ID = "1aBwpHOoJfQUgIscWE2zRk0qRCNwcVjtOCS-f6NTloJA";
 
 const getUrl = async (req, res) => {
   const { shortUrl } = req.params;
