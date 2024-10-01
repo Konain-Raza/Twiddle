@@ -4,6 +4,6 @@ const { storeUrl, getUrl, getQRCode } = require("../controllers/twiddle_controll
 
 router.post("/crunch", storeUrl);
 router.get("/:shortUrl", getUrl);
-router.get("/qryptic", getQRCode);
+router.get("/qryptic/:url", getQRCode);
 
 module.exports = router;
