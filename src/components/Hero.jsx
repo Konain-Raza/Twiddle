@@ -54,8 +54,8 @@ const Hero = () => {
   };
 
   return (
-    <section className="bg-white md:p-10 px-5 max-h-max flex flex-row">
-      <div className="grid w-full items-center h-max px-5 md:px-20 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
+    <section className="bg-white md:p-10 px-5 max-h-max w-screen flex flex-row">
+      <div className="grid w-screen items-center h-max px-5 md:px-20 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <a
             href="#"
@@ -99,89 +99,98 @@ const Hero = () => {
         </div>
 
         <div className="lg:col-span-5 lg:flex mt-10 lg:mt-0">
-          <form
-            onSubmit={handleSubmit}
-            className="border-gray-300 border border-1 h-max p-6 rounded-2xl w-full space-y-4"
-          >
-            <h2 className="text-2xl font-bold text-gray-800 mb-4">
-              🔗 Shorten Your Link
-            </h2>
-            <input
-              type="text"
-              name="link"
-              placeholder="Enter your long URL here..."
-              className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
-              defaultValue="https://"
-              required
+  <form
+    onSubmit={handleSubmit}
+    className="border-gray-300 border border-1 h-max p-4 md:p-6 rounded-2xl w-full space-y-4"
+  >
+    <h2 className="text-xl md:text-2xl font-bold text-gray-800 mb-4">
+      🔗 Shorten Your Link
+    </h2>
+    <input
+      type="text"
+      name="link"
+      placeholder="Enter your long URL here..."
+      className="w-full px-4 py-2 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-primary-500"
+      defaultValue="https://"
+      required
+    />
+    <button
+      type="submit"
+      className={`w-full px-4 md:px-5 py-3 text-white rounded-lg focus:outline-none transition duration-300 ${
+        loading
+          ? "bg-gray-500"
+          : "bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500"
+      }`}
+      disabled={loading}
+    >
+      {loading ? "Twiddling..." : "✂️ Twiddle it!"}
+    </button>
+
+    {/* Only render if original URL is present */}
+    {twiddle.originalUrl && (
+      <div className="flex flex-col md:flex-row justify-between mt-6 space-y-6 md:space-y-0">
+        {/* Left column (QR code and download button) */}
+        <div className="flex flex-col items-center">
+          {twiddle.qr && (
+            <img
+              src={twiddle.qr}
+              alt="QR Code"
+              className="my-2 rounded shadow-md w-48 h-48 md:w-36 md:h-36"
             />
-            <button
-              type="submit"
-              className={`w-full px-5 py-3 text-white rounded-lg focus:outline-none transition duration-300 ${
-                loading
-                  ? "bg-gray-500"
-                  : "bg-blue-600 hover:bg-blue-700 focus:ring-4 focus:ring-blue-500"
-              }`}
-              disabled={loading}
-            >
-              {loading ? "Twiddling..." : "✂️ Twiddle it!"}
-            </button>
-            {twiddle.originalUrl && ( // Only render if original URL is present
-              <div className="flex flex-col md:flex-row justify-between mt-6">
-                <div className="w-full md:w-[30%] flex flex-col items-center">
-                  {twiddle.qr && (
-                    <img
-                      src={twiddle.qr}
-                      alt="QR Code"
-                      className="my-2 rounded shadow-md"
-                    />
-                  )}
-
-                  <a
-                    href={twiddle.qr}
-                    download="twiddle-qr.png"
-                    class="bg-gray-200 text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
-                  >
-                    <div class="bg-blue-600 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
-                      <i className="text-white ri-arrow-right-line"></i>
-                    </div>
-                    <p class="translate-x-2 translate-y-3">Download</p>
-                  </a>
-                </div>
-                <div className="w-full md:w-[70%] p-6 mt-4 md:mt-0 flex flex-col justify-center">
-                  <p className="text-lg font-semibold text-gray-800">
-                    Your Original URL:
-                  </p>
-                  <div className="flex flex-row justify-between items-center w-max gap-3">
-                    <a
-                      href={twiddle.originalUrl}
-                      className="text-gray-700 underline mt-1 break-all"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {twiddle.originalUrl}
-                    </a>
-                    <CopyButton text={twiddle.originalUrl} />
-                  </div>
-
-                  <p className="text-lg font-semibold text-gray-800">
-                    Your Shortened URL:
-                  </p>
-                  <div className="flex flex-row justify-between items-center w-max gap-3">
-                    <a
-                      href={twiddle.shortenedUrl}
-                      className="text-blue-600 underline mt-1 break-all"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                    >
-                      {twiddle.shortenedUrl}
-                    </a>
-                    <CopyButton text={twiddle.shortenedUrl} />
-                  </div>
-                </div>
-              </div>
-            )}
-          </form>
+          )}
+          <a
+            href={twiddle.qr}
+            download="twiddle-qr.png"
+            className="bg-gray-200 text-center w-48 rounded-2xl h-14 relative text-black text-xl font-semibold group"
+          >
+            <div className="bg-blue-600 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
+              <i className="text-white ri-arrow-right-line"></i>
+            </div>
+            <p className="translate-x-2 translate-y-3">Download</p>
+          </a>
         </div>
+
+        {/* Right column (Original URL, Shortened URL, and copy buttons) */}
+        <div className="w-full md:w-[70%] p-4 md:p-6 flex flex-col justify-center space-y-4">
+          <div>
+            <p className="text-lg font-semibold text-gray-800">
+              Your Original URL:
+            </p>
+            <div className="flex flex-row justify-between items-center w-full md:w-max gap-3">
+              <a
+                href={twiddle.originalUrl}
+                className="text-gray-700 underline break-all mt-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {twiddle.originalUrl}
+              </a>
+              <CopyButton text={twiddle.originalUrl} />
+            </div>
+          </div>
+
+          <div>
+            <p className="text-lg font-semibold text-gray-800">
+              Your Shortened URL:
+            </p>
+            <div className="flex flex-row justify-between items-center w-full md:w-max gap-3">
+              <a
+                href={twiddle.shortenedUrl}
+                className="text-blue-600 underline break-all mt-1"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                {twiddle.shortenedUrl}
+              </a>
+              <CopyButton text={twiddle.shortenedUrl} />
+            </div>
+          </div>
+        </div>
+      </div>
+    )}
+  </form>
+</div>
+
       </div>
       <ToastContainer
         position="top-center"
