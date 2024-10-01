@@ -2,6 +2,7 @@
 import React from "react";
 import Code from "./Code";
 import CodeSnippet from "./CodeSnippet";
+import Resources from "./Resources";
 
 const Documentation = () => {
   const domain = "https://twiddlee.vercel.app";
@@ -117,6 +118,7 @@ const Documentation = () => {
           />
         </div>
       </section>
+      <Resources/>
     </div>
   );
 };

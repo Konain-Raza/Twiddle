@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import logo from "../../public/assets/images/icon.png";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,35 +11,31 @@ const Navbar = () => {
   const navLinks = [
     { name: "Home", href: "#home" },
     { name: "API Docs", href: "#docs" },
-    // Add more links as needed
+    { name: "Resources", href: "#resources" },
   ];
 
   return (
-    <nav className="w-screen bg-white shadow-md">
-      <div className="w-full md:px-32 flex items-center justify-between mx-auto p-4">
+    <nav className="w-screen mt-2 shadow-md">
+      <div className="w-full md:px-28  flex items-center justify-between mx-auto p-4">
         <a href="/" className="flex items-center space-x-3 rtl:space-x-reverse">
-          <img
-            src="https://flowbite.com/docs/images/logo.svg"
-            className="h-8"
-            alt="Flowbite Logo"
-          />
-          <span className="self-center text-2xl font-semibold text-blue-700">Twiddle</span>
+          <img src={logo} className="h-12" alt="Twiddle Logo" />
+          <span className="self-center text-3xl font-semibold ">Twiddle</span>
         </a>
         <div className="hidden md:flex md:w-auto">
-        <ul className="font-medium flex flex-row space-x-8 md:mt-0">
-          {navLinks.map((link, index) => (
-            <li key={index}>
-              <a
-                href={link.href}
-                className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent"
-                aria-current={link.name === "Home" ? "page" : undefined}
-              >
-                {link.name}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </div>
+          <ul className="font-medium flex flex-row space-x-8 md:mt-0">
+            {navLinks.map((link, index) => (
+              <li key={index}>
+                <a
+                  href={link.href}
+                  className="block py-2 px-3 text-gray-900 rounded hover:bg-gray-100 md:hover:bg-transparent"
+                  aria-current={link.name === "Home" ? "page" : undefined}
+                >
+                  {link.name}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </div>
         <div className="md:hidden flex items-center">
           <button
             onClick={toggleMenu}
@@ -83,7 +80,6 @@ const Navbar = () => {
         </div>
       )}
       {/* For larger screens */}
-    
     </nav>
   );
 };
