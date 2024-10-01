@@ -74,18 +74,20 @@ const storeUrl = async (req, res) => {
 };
 
 const getQRCode = async (req, res) => {
- const { url } = req.params; 
+  const { url } = req.params;
 
   if (!url) {
     return res.status(400).json({ message: "🛑 URL is required to generate a QR code!" });
   }
 
-  if (!urlPattern.test(url)) {
+  const encodedUrl = encodeURIComponent(url);
+
+  if (!urlPattern.test(encodedUrl)) {
     return res.status(400).json({ message: "🛑 Invalid URL! Please check and try again." });
   }
 
   try {
-    const qrCodeUrl = await QRCode.toDataURL(url);
+    const qrCodeUrl = await QRCode.toDataURL(encodedUrl);
     return res.status(200).json({
       message: "Here is your QR code!",
       qrCode: qrCodeUrl,
@@ -95,5 +97,6 @@ const getQRCode = async (req, res) => {
     return res.status(500).json({ message: "⚠️ Error generating QR code." });
   }
 };
+
 
 module.exports = { storeUrl, getUrl, getQRCode };
