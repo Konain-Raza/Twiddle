@@ -54,12 +54,12 @@ const Hero = () => {
   };
 
   return (
-    <section className="bg-white md:p-10 px-5 max-h-max w-screen flex flex-row">
+    <section className="bg-white md:p-10 px-5 max-h-max w-screen flex flex-row" id="#home">
       <div className="grid w-screen items-center h-max px-5 md:px-20 py-8 mx-auto lg:gap-8 xl:gap-0 lg:py-16 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <a
             href="#"
-            className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-blue-50 rounded-full dark:text-white hover:bg-gray-200 dark:hover:bg-gray-700"
+            className="inline-flex justify-between items-center py-1 px-1 pr-4 mb-7 text-sm text-gray-700 bg-blue-50 rounded-full dark:text-white hover:bg-gray-200 "
             role="alert"
           >
             <span className="text-xs bg-blue-600 rounded-full text-white px-4 py-1.5 mr-3">
@@ -123,7 +123,7 @@ const Hero = () => {
       }`}
       disabled={loading}
     >
-      {loading ? "Twiddling..." : "✂️ Twiddle it!"}
+      {loading ? "🔪 Snipping it..." : "✂️ Twiddle it!"}
     </button>
 
     {/* Only render if original URL is present */}
