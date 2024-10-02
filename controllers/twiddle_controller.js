@@ -51,6 +51,9 @@ const storeUrl = async (req, res) => {
 
   const shortUrl = uid.rnd();
   const encodedUrl = encodeURIComponent(url);
+  const protocol = req.protocol
+  const host = req.get('host')
+  const domain = `${protocol}://${host}`
 
   try {
     await sheets.spreadsheets.values.append({
@@ -64,7 +67,7 @@ const storeUrl = async (req, res) => {
 
     return res.status(200).json({
       originalUrl: url,
-      shortUrl: shortUrl,
+      shortUrl: `${domain}/${shortUrl}`,
       message: "✨ Your short URL is ready! Share it with the world! 🚀",
     });
   } catch (error) {
@@ -72,7 +75,6 @@ const storeUrl = async (req, res) => {
     return res.status(500).json({ message: "⚠️ Something went wrong while storing your URL." });
   }
 };
-
 const getQRCode = async (req, res) => {
   const { url } = req.params;
 
