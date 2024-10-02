@@ -1,5 +1,5 @@
 const express = require("express");
-const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON);
+const credentials = JSON.parse(process.env.GOOGLE_APPLICATION_CREDENTIALS_JSON_FILE);
 const { google } = require("googleapis");
 const QRCode = require("qrcode");
 const ShortUniqueId = require("short-unique-id");
