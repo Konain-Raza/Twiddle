@@ -1,19 +1,21 @@
 import React, { useState } from "react";
-import "../index.css"
+import "../index.css";
+
 const CopyButton = ({ code }) => {
     const [isCopied, setIsCopied] = useState(false);
 
     const handleCopy = () => {
+        console.log(code);
         navigator.clipboard.writeText(code)
             .then(() => {
                 setIsCopied(true);
-             
+                setTimeout(() => setIsCopied(false), 2000); // Reset copied state after 2 seconds
             })
             .catch(err => console.error('Failed to copy: ', err));
     };
 
     return (
-        <button className="copy" onClick={handleCopy}>
+        <button type="button" className="copy" onClick={handleCopy}>
             <span
                 data-text-end="Copied!"
                 data-text-initial="Copy to clipboard"
@@ -50,11 +52,9 @@ const CopyButton = ({ code }) => {
                     version="1.1"
                     xmlns="http://www.w3.org/2000/svg"
                     className="checkmark"
-                    // style={{ display: isCopied ? 'block' : 'none' }} // Show only when copied
                 >
                     <g>
                         <path
-                            data-original="#000000"
                             fill="currentColor"
                             d="M9.707 19.121a.997.997 0 0 1-1.414 0l-5.646-5.647a1.5 1.5 0 0 1 0-2.121l.707-.707a1.5 1.5 0 0 1 2.121 0L9 14.171l9.525-9.525a1.5 1.5 0 0 1 2.121 0l.707.707a1.5 1.5 0 0 1 0 2.121z"
                         />
