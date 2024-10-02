@@ -1,3 +1,8 @@
+<div align="center">
+  <img src="https://cdn-icons-png.flaticon.com/512/8372/8372114.png" alt="Description of Image" width="250px" />
+</div>
+
+
 # 🌀 **Twiddle** – Snap Your Links into Bite-Sized Brilliance ⚡
 
 **Twiddle** is here to save your long, boring URLs from an eternity of awkward scrolling! 🚀 We take those stretched-out links and shrink them into sleek, shareable gems. Oh, and did we mention you get a shiny QR code, too? Because why not! ✨
