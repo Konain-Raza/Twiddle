@@ -40,7 +40,7 @@ const Hero = () => {
       setTwiddle((prev) => ({
         ...prev,
         originalUrl: response.data.originalUrl,
-        shortenedUrl: `${domain}/${response.data.shortUrl}`,
+        shortenedUrl: `${response.data.shortUrl}`,
         qr: qrCodeResponse.data.qrCode,
       }));
       toast.success("URL shortened successfully!");
