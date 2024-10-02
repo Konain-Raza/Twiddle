@@ -79,13 +79,17 @@ const getQRCode = async (req, res) => {
   if (!url) {
     return res.status(400).json({ message: "🛑 URL is required to generate a QR code!" });
   }
+  
+  const encodedUrl = encodeURIComponent(url);
 
   if (!urlPattern.test(url)) {
     return res.status(400).json({ message: "🛑 Invalid URL! Please check and try again." });
   }
 
+
+
   try {
-    const qrCodeUrl = await QRCode.toDataURL(url);
+    const qrCodeUrl = await QRCode.toDataURL(encodedUrl);
     return res.status(200).json({
       message: "Here is your QR code!",
       qrCode: qrCodeUrl,
