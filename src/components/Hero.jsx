@@ -36,7 +36,7 @@ const Hero = () => {
       const qrCodeResponse = await axios.get(
         `${domain}/qryptic/${encodeURIComponent(url)}`
       ); //get qr code
-      console.log(`${domain}/qryptic/${encodeURIComponent(url)}`);
+
       setTwiddle((prev) => ({
         ...prev,
         originalUrl: response.data.originalUrl,
