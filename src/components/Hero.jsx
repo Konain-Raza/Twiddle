@@ -36,7 +36,7 @@ const Hero = () => {
       const qrCodeResponse = await axios.get(
         `${domain}/qryptic/${encodeURIComponent(url)}`
       ); //get qr code
-console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
+      console.log(`${domain}/qryptic/${encodeURIComponent(url)}`);
       setTwiddle((prev) => ({
         ...prev,
         originalUrl: response.data.originalUrl,
@@ -52,7 +52,10 @@ console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
   };
 
   return (
-    <section className="bg-white flex flex-col lg:flex-row lg:px-5 w-screen" id="#home">
+    <section
+      className="bg-white flex flex-col lg:flex-row lg:px-5 w-screen"
+      id="#home"
+    >
       <div className="grid w-full items-center h-max px-5 md:px-20 py-8 mx-auto lg:gap-8 xl:gap-0 lg:grid-cols-12">
         <div className="mr-auto place-self-center lg:col-span-7">
           <a
@@ -73,7 +76,11 @@ console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
             🔗 Twiddle: Snap Your Links into Bite-Sized Brilliance ⚡
           </h1>
           <p className="max-w-2xl mb-6 font-light text-gray-500 lg:mb-8 md:text-lg lg:text-xl">
-            🌍 Tired of URLs stretching longer than a scroll through your socials? With Twiddle, every link is transformed into a tiny, shareable work of art. ✨ It's quick, it's clean, and yes—it even fits in a fortune cookie. 🍪 Let's make those links short, sweet, and effortlessly chic! 🚀
+            🌍 Tired of URLs stretching longer than a scroll through your
+            socials? With Twiddle, every link is transformed into a tiny,
+            shareable work of art. ✨ It's quick, it's clean, and yes—it even
+            fits in a fortune cookie. 🍪 Let's make those links short, sweet,
+            and effortlessly chic! 🚀
           </p>
 
           <div className="flex flex-col sm:flex-row">
@@ -135,7 +142,7 @@ console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
                     download="twiddle-qr.png"
                     className="bg-gray-200 text-center w-40 rounded-2xl h-14 relative text-black text-xl font-semibold group"
                   >
-                    <div className="bg-blue-600 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[184px] z-10 duration-500">
+                    <div className="bg-blue-600 rounded-xl h-12 w-1/4 flex items-center justify-center absolute left-1 top-[4px] group-hover:w-[150px] z-10 duration-500">
                       <i className="text-white ri-arrow-right-line"></i>
                     </div>
                     <p className="translate-x-2 translate-y-3">Download</p>
@@ -147,16 +154,20 @@ console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
                     <p className="text-lg font-semibold text-gray-800">
                       Your Original URL:
                     </p>
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-3">
+                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center w-full gap-5">
                       <a
                         href={twiddle.originalUrl}
                         className="text-gray-700 underline break-all mt-1"
                         target="_blank"
                         rel="noopener noreferrer"
                       >
-                        {twiddle.originalUrl}
+                        {twiddle.originalUrl.length > 50
+                          ? `${twiddle.originalUrl.substring(0, 50)}...`
+                          : twiddle.originalUrl}
                       </a>
-                      <CopyButton text={twiddle.originalUrl} />
+                      <div>
+                        <CopyButton text={twiddle.originalUrl} />
+                      </div>
                     </div>
                   </div>
 
@@ -173,7 +184,9 @@ console.log(`${domain}/qryptic/${encodeURIComponent(url)}`)
                       >
                         {twiddle.shortenedUrl}
                       </a>
+                     <div>
                       <CopyButton text={twiddle.shortenedUrl} />
+                     </div>
                     </div>
                   </div>
                 </div>
