@@ -71,8 +71,8 @@ const Documentation = () => {
           <h4 className="font-semibold text-gray-700 mt-4">
             Example Code (Axios):
           </h4>
-          <CodeSnippet
-           code={`axios.get(\`https://twiddlee.vercel.app/qryptic/\${encodeURIComponent(originalUrl)}\`)\n  .then(response => console.log('QR Code generated!', response.data.qrCode))\n  .catch(error => console.error('Error generating QR code:', error));`;}
+           <CodeSnippet
+            code={`axios.get('https://twiddlee.vercel.app/qryptic/' + encodeURIComponent(originalUrl))\n  .then(response => console.log('QR Code generated!', response.data.qrCode))\n  .catch(error => console.error('Error generating QR code:', error));`}
           />
         </div>
         <h3 className="text-xl font-semibold text-gray-600 mb-2">
