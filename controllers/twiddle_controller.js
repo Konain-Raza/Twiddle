@@ -74,7 +74,7 @@ const storeUrl = async (req, res) => {
 };
 
 const getQRCode = async (req, res) => {
-const { url } = req.query; 
+const { url } = req.params; 
   if (!url) {
     return res.status(400).json({ message: "🛑 URL is required to generate a QR code!" });
   }
