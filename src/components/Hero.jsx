@@ -33,7 +33,6 @@ const Hero = () => {
 
     try {
       const response = await axios.post(`${domain}/crunch`, { url }); //store url
-      console.log(response);
       const qrCodeResponse = await axios.get(
         `${domain}/qryptic/${encodeURIComponent(url)}`
       ); //get qr code
