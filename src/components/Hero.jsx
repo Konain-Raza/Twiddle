@@ -166,7 +166,7 @@ const Hero = () => {
                           : twiddle.originalUrl}
                       </a>
                       <div>
-                        <CopyButton text={twiddle.originalUrl} />
+                        <CopyButton code={twiddle.originalUrl} />
                       </div>
                     </div>
                   </div>
@@ -185,7 +185,7 @@ const Hero = () => {
                         {twiddle.shortenedUrl}
                       </a>
                      <div>
-                      <CopyButton text={twiddle.shortenedUrl} />
+                      <CopyButton code={twiddle.shortenedUrl} />
                      </div>
                     </div>
                   </div>
