@@ -72,7 +72,7 @@ const storeUrl = async (req, res) => {
     });
   } catch (error) {
     console.error("Error storing URL:", error);
-    return res.status(500).json({ message: "⚠️ Something went wrong while storing your URL." });
+    return res.status(500).json({ message: "⚠️ Something went wrong while storing your URL."+error });
   }
 };
 const getQRCode = async (req, res) => {
