@@ -72,7 +72,7 @@ const Documentation = () => {
             Example Code (Axios):
           </h4>
           <CodeSnippet
-            code={`axios.get('${domain}/qryptic/https://example.com')\n  .then(response => console.log('QR Code generated!', response.data.qrCode))\n  .catch(error => console.error('Error generating QR code:', error));`}
+           code={`axios.get(\`https://twiddlee.vercel.app/qryptic/\${encodeURIComponent(originalUrl)}\`)\n  .then(response => console.log('QR Code generated!', response.data.qrCode))\n  .catch(error => console.error('Error generating QR code:', error));`;}
           />
         </div>
         <h3 className="text-xl font-semibold text-gray-600 mb-2">
